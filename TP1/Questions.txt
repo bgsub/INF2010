@@ -1,17 +1,13 @@
 1.Identifiez un patron de conception autre que Fluent Builder dans le tp.
 	b. Donnez un brève description du patron et comment it est utilisé dans le tp.
 
-
-//Espace pour écrire 
-//
-//
-//
+    Le patron de conception "Forte cohésion" est un autre patron qui se retrouve dans ce travail pratique. Ce patron permet d'avoir une grande compréhensibilité des classes concernées. Ses avantages principaux sont la compréhension, maintenance et réutilisation de la classe. Dans ce travail pratique, chaque classe possède des responsabilités sensées et qui sont faciles a comprendre. Par exemple, la classe "Rectangle" sers à créer des rectangles et la classe "Ellipse" sers à créer des ellipses. Aussi, toutes les classes ont une forte cohésion entre elles puisqu'elles sont tous reliées d'une manière ou d'une autre. La classe "PointOperator" sers à opérer sur la classe "Point2d". La classe "BaseShape" sers à créer une forme quelconque a partir de plusieurs "Point2d". Finalement, les classes "Rectangle" et "Ellipse" servent à créer des rectangles et des ellipses à travers les méthodes de la classe "BaseShape". Chaque classe a une responsabilité qui est cohérente avec son nom et sa fonction. De plus, un des avantages du patron "Forte Cohésion" est la réutilisabilité des classes, ce qui est possible ici; les classes peuvent être utilisées pour créer des dessins ou même quelconques autres lettres autres que celles déja utilisées.
 
 2. Donnez une explication du patron composite.
 	b. Comment le patron composite aurait pu être utilisé dans ce travail pratique? 
 
-//Espace pour écrire 
-//
-//
-//
+    Le patron composite permet d'utiliser et de traiter chaque classe comme un composant du tout. Ainsi, manipuler toutes les classes composant un plus grand objet en même temps d'une certaine manière est l'équivalent de traiter le plus grand objet de cette même façon. En ce qui concerne ce travail pratique, nous aurions pu utiliser ce patron dans la méthode clone de notre classe "BaseShape". En effet, lorsque nous aurions voulu cloner un objet de type "Rectangle", nous aurions pu itérer sur le "ArrayList" de cet objet et appeller une méthode clone sur chacun des points 2d se trouvant dans ce "ArrayList". Ainsi, la méthode clone de "BaseShape" appelée à travers l'objet de type "Rectangle" aurait appelé la méthode clone de chacun des objets de type "Point2d" dans le "ArrayList" de "BaseShape". De cette manière, nous aurions utilisé le patron Composite avec les objets de type "Rectangle", "BaseShape" et "Point2d" comme étant les "Objet", "ObjetComposite" et "ObjetSimple" du diagramme des classes UML du patron Composite. Cependant, nous avont préféré simplement créer un nouvel objet de type "BaseShape" et de l'initialiser avec un "ArrayList" ayant les mêmes objets "Point2d" que l'objet originel à cloner. Ceci rends le code plus vite et plus court. À part de ça, toutes nos autres méthodes de notre classe "BaseShape" mofifiant l'attribut de type "ArrayList" de cette même classe fait utilisation du patron composite.
+
+
+
 	   
