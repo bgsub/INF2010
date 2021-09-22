@@ -10,129 +10,119 @@ public final class LetterFactory {
 
     // TODO
     public static BaseShape create_e() {
-        Ellipse mainBodyE = new Ellipse(maxWidth, maxHeight);
-        Ellipse middleToRemovE = new Ellipse(maxWidth - stripeThickness,
+       BaseShape mainBodyE = new Ellipse(maxWidth, maxHeight);
+        BaseShape  middleToRemovE = new Ellipse(maxWidth - stripeThickness,
                 maxHeight - stripeThickness);
-        Rectangle rectangleToAddE = new Rectangle(halfMaxWidth/2, maxWidth).rotate(Math.PI/2);
-        BaseShape rightToRemove = new Rectangle(halfMaxWidth, halfMaxHeight/2).translate(new Point2d(halfMaxWidth/2, halfMaxWidth/2));
+        BaseShape  rectangleToAddE = new Rectangle(halfMaxWidth/2, maxWidth).rotate(Math.PI/2);
+        BaseShape  rightToRemove = new Rectangle(halfMaxWidth, halfMaxHeight/2).translate(new Point2d(halfMaxWidth/2, halfMaxWidth/2));
 
                 //patron fluent builder
-        mainBodyE.remove(middleToRemovE).remove(rightToRemove).add(rectangleToAddE);
+       return mainBodyE.remove(middleToRemovE).remove(rightToRemove).add(rectangleToAddE);
 
 
-        return mainBodyE;
+
     }
 
     // TODO
     public static BaseShape create_a() {
-       Ellipse mainBodyA= new Ellipse(maxWidth,maxHeight);
-        Ellipse middleToRemove = new Ellipse(maxWidth - stripeThickness,
+        BaseShape  mainBodyA= new Ellipse(maxWidth,maxHeight);
+        BaseShape  middleToRemove = new Ellipse(maxWidth - stripeThickness,
                 maxHeight - stripeThickness);
-        Rectangle rectangleToAdd = new Rectangle(halfMaxWidth/4, maxHeight).translate(new Point2d(maxWidth/2, 0.0));
-        mainBodyA.remove(middleToRemove);
-       mainBodyA.add(rectangleToAdd);
+        BaseShape  rectangleToAdd = new Rectangle(halfMaxWidth/4, maxHeight).translate(new Point2d(maxWidth/2, 0.0));
+        //patron fluent builder
+        return mainBodyA.remove(middleToRemove).add(rectangleToAdd);
 
-        return mainBodyA;
+
+
     }
 
     // TODO
     public static BaseShape create_C() {
-        Ellipse mainBody = new Ellipse(maxWidth, maxHeight);
-        Ellipse middleToRemove = new Ellipse(maxWidth - stripeThickness,
+        BaseShape mainBody = new Ellipse(maxWidth, maxHeight);
+        BaseShape middleToRemove = new Ellipse(maxWidth - stripeThickness,
                 maxHeight - stripeThickness);
        BaseShape rightToRemove = new Rectangle(halfMaxWidth, maxHeight/1.5).translate(new Point2d(halfMaxWidth/2, 0.0));
+        //patron fluent builder
+        return mainBody.remove(middleToRemove).remove(rightToRemove);
 
-        mainBody.remove(middleToRemove);
-       mainBody.remove(rightToRemove);
-        return mainBody;
     }
 
     // TODO
     public static BaseShape create_l() {
-          return  new Rectangle(halfMaxWidth/4, maxHeight);
+
+        return  new Rectangle(halfMaxWidth/4, maxHeight);
     }
 
     // TODO
     public static BaseShape create_i() {
         BaseShape mainBodyI=new Rectangle(halfMaxWidth/4,maxHeight*3/4);
        BaseShape circleIToAdd = new Ellipse(halfMaxWidth/2,halfMaxWidth/2);
-        mainBodyI.translate(new Point2d(0.0,maxHeight*4/7));
-
-        return mainBodyI.add(circleIToAdd);
+        //patron fluent builder
+       return mainBodyI.translate(new Point2d(0.0,maxHeight*4/7)).add(circleIToAdd);
     }
 
     // TODO
     public static BaseShape create_A() {
-         Rectangle mainBodyA1 = new Rectangle(halfMaxWidth/4, maxHeight);
-        mainBodyA1.rotate(270.0);
-        Rectangle mainBodyA2 = new Rectangle(halfMaxWidth/4, maxHeight).translate(new Point2d(halfMaxWidth, -halfMaxHeight/15));
+         BaseShape mainBodyA1 = new Rectangle(halfMaxWidth/4, maxHeight);
+        BaseShape mainBodyA2 = new Rectangle(halfMaxWidth/4, maxHeight).translate(new Point2d(halfMaxWidth, -halfMaxHeight/15));
         mainBodyA2.add(mainBodyA2.rotate(-270.0));
-        mainBodyA1.add(mainBodyA2);
-        Rectangle mainBodyA3 = new Rectangle(stripeThickness, halfMaxHeight/6);
-        mainBodyA3.translate(new Point2d(-halfMaxWidth/2,0.0));
-         mainBodyA1.rotate(Math.PI);
-         return mainBodyA1.add(mainBodyA3);
+
+        BaseShape mainBodyA3 = new Rectangle(stripeThickness, halfMaxHeight/6);
+        //patron fluent builder
+        return  mainBodyA1.rotate(270.0).add(mainBodyA2.add(mainBodyA2.rotate(-270.0))).rotate(Math.PI)
+                .add( mainBodyA3.translate(new Point2d(-halfMaxWidth/2,0.0)));
+
     }
 
     // TODO
     public static BaseShape create_V() {
-         BaseShape mainBodyV1 = new Rectangle(halfMaxWidth/4, maxHeight);
-      mainBodyV1.rotate(270.0);
-      Rectangle mainBodyV2 = new Rectangle(halfMaxWidth/4, maxHeight).translate(new Point2d(halfMaxWidth, -halfMaxHeight/15));
-      mainBodyV2.add(mainBodyV2.rotate(-270.0));
-      mainBodyV1.add(mainBodyV2);
-      return mainBodyV1;
+        BaseShape mainBodyV1 = new Rectangle(halfMaxWidth/4, maxHeight);
+
+        Rectangle mainBodyV2 = new Rectangle(halfMaxWidth/4, maxHeight).translate(new Point2d(halfMaxWidth, -halfMaxHeight/15));
+        //patron fluent builder
+        return mainBodyV1.rotate(270.0).add(mainBodyV2.add(mainBodyV2.rotate(-270.0)));
     }
 
     // TODO
     public static BaseShape create_n() {
-        Rectangle mainBody0 = new Rectangle(halfMaxWidth/4, maxHeight);
-        Ellipse mainBody1= new Ellipse(maxWidth,maxHeight*0.4);
-        Ellipse middleToRemove = new Ellipse(maxWidth - stripeThickness,
+        BaseShape mainBody0 = new Rectangle(halfMaxWidth/4, maxHeight);
+        BaseShape mainBody1= new Ellipse(maxWidth,maxHeight*0.4);
+        BaseShape middleToRemove = new Ellipse(maxWidth - stripeThickness,
                 maxHeight*0.4 - stripeThickness);
-        Rectangle rectangleToRemove = new Rectangle(halfMaxHeight,maxWidth).translate(new Point2d(0.0,halfMaxHeight*0.4));
-        Rectangle mainBody2 = new Rectangle(halfMaxWidth/4,maxHeight*0.75);
-        mainBody1.remove(middleToRemove);
-        mainBody1.remove(rectangleToRemove);
-        mainBody1.translate(new Point2d(maxWidth*0.42,-halfMaxWidth*1.2));
-        mainBody2.translate(new Point2d(maxWidth*0.85,maxWidth*0.3));
-        mainBody0.add(mainBody1);
-        return mainBody0.add(mainBody2);
+        BaseShape rectangleToRemove = new Rectangle(halfMaxHeight,maxWidth).translate(new Point2d(0.0,halfMaxHeight*0.4));
+        BaseShape mainBody2 = new Rectangle(halfMaxWidth/4,maxHeight*0.75);
+        //patron fluent builder
+        return mainBody0.add(mainBody1.remove(middleToRemove)
+                        .remove(rectangleToRemove).translate(new Point2d(maxWidth*0.42,-halfMaxWidth*1.2)))
+                .add(mainBody2.translate(new Point2d(maxWidth*0.85,maxWidth*0.3)));
     }
 
     // TODO
     public static BaseShape create_r() {
         BaseShape mainBodyR0 = new Rectangle(halfMaxWidth/4, maxHeight);
-        Ellipse mainBodyR1= new Ellipse(maxWidth,maxHeight*0.4);
-        Ellipse middleToRemove = new Ellipse(maxWidth - stripeThickness,
+        BaseShape mainBodyR1= new Ellipse(maxWidth,maxHeight*0.4);
+        BaseShape middleToRemove = new Ellipse(maxWidth - stripeThickness,
                 maxHeight*0.4 - stripeThickness);
-        Rectangle rectangleToRemove = new Rectangle(halfMaxHeight,maxWidth).translate(new Point2d(0.0,halfMaxHeight*0.4));
-
-        mainBodyR1.remove(middleToRemove);
-        mainBodyR1.remove(rectangleToRemove);
-        mainBodyR1.translate(new Point2d(maxWidth*0.42,-halfMaxWidth*1.2));
-        return mainBodyR0.add(mainBodyR1);
+        BaseShape rectangleToRemove = new Rectangle(halfMaxHeight,maxWidth).translate(new Point2d(0.0,halfMaxHeight*0.4));
+        //patron fluent builder
+        return mainBodyR0.add(mainBodyR1.remove(middleToRemove)
+                .remove(rectangleToRemove).translate(new Point2d(maxWidth*0.42,-halfMaxWidth*1.2)));
     }
 
     // TODO
     public static BaseShape create_B() {
-        Rectangle mainBodyB0 = new Rectangle(halfMaxWidth/4, maxHeight);
-        Ellipse mainBodyB1 = new Ellipse(maxWidth/0.7, halfMaxHeight);
+        BaseShape mainBodyB0 = new Rectangle(halfMaxWidth/4, maxHeight);
+        BaseShape mainBodyB1 = new Ellipse(maxWidth/0.7, halfMaxHeight);
         BaseShape mainBodyB2= new Ellipse(maxWidth/0.7, halfMaxHeight);
 
-        Ellipse middleToRemove = new Ellipse(maxWidth/0.7 - stripeThickness,
+        BaseShape middleToRemove = new Ellipse(maxWidth/0.7 - stripeThickness,
                 halfMaxHeight - stripeThickness);
         BaseShape leftToRemove = new Rectangle(maxWidth/0.7,halfMaxHeight).translate(new Point2d(-halfMaxWidth/0.7,0.0));
 
-       mainBodyB1.remove(middleToRemove);
-       mainBodyB1.remove(leftToRemove);
-       mainBodyB2.remove(middleToRemove);
-       mainBodyB2.remove(leftToRemove);
-
-        mainBodyB1.translate(new Point2d(0.0,halfMaxHeight/2));
-        mainBodyB2.translate(new Point2d(0.0,-halfMaxHeight/2));
-        mainBodyB0.add(mainBodyB1).add(mainBodyB2);
-
-        return mainBodyB0;
+        //patron fluent builder
+        return mainBodyB0.add(mainBodyB1.remove(middleToRemove).remove(leftToRemove)
+                .translate(new Point2d(0.0,halfMaxHeight/2)))
+                .add(mainBodyB2.remove(middleToRemove).remove(leftToRemove)
+                        .translate(new Point2d(0.0,-halfMaxHeight/2)));
    }
 }
