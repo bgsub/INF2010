@@ -27,7 +27,6 @@ Interview {
         var hMapFromFilename1 = getFrequencyHashTable(readFile(filename1));
         var hMapFromFilename2 = getFrequencyHashTable(readFile(filename2));
         for(char c: hMapFromFilename1.keySet()) {
-
             if (hMapFromFilename2.containsKey(c)) {
                 diff+= Math.abs((hMapFromFilename1.get(c)-hMapFromFilename2.get(c)));
             }
@@ -37,7 +36,6 @@ Interview {
             if (!hMapFromFilename1.containsKey(c) ) {
                 diff+= hMapFromFilename2.get(c);
             }
-
         }
         return diff;
     }
