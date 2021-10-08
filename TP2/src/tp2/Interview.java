@@ -28,13 +28,13 @@ Interview {
         var hMapFromFilename2 = getFrequencyHashTable(readFile(filename2));
         for(char c: hMapFromFilename1.keySet()) {
 
-            if (hMapFromFilename2.containsKey(c) && c==Character.toLowerCase(c)) {
+            if (hMapFromFilename2.containsKey(c)) {
                 diff+= Math.abs((hMapFromFilename1.get(c)-hMapFromFilename2.get(c)));
             }
-            else if (!hMapFromFilename2.containsKey(c) && c==Character.toLowerCase(c)) diff+= hMapFromFilename1.get(c);
+            else if (!hMapFromFilename2.containsKey(c)) diff+= hMapFromFilename1.get(c);
         }
         for(char c: hMapFromFilename2.keySet()) {
-            if (!hMapFromFilename1.containsKey(c) &&  c==Character.toLowerCase(c)) {
+            if (!hMapFromFilename1.containsKey(c) ) {
                 diff+= hMapFromFilename2.get(c);
             }
 

@@ -33,11 +33,12 @@ public class InterviewTester {
 
     private static Boolean testCompareFrequencies() {
         int result1 = 0, result2 = 0;
-        int expected1 = 65, expected2 = 62;
+        int expected1 = 67, expected2 = 64;
         try {
             result1 = Interview.compareFrequencies("quote1.txt", "quote2.txt");
             result2 = Interview.compareFrequencies("quote2.txt", "quote3.txt");
         } catch (IOException e) {}
+
         return result1 == expected1 && result2 == expected2 ;
     }
 
@@ -58,9 +59,8 @@ public class InterviewTester {
             put('d', 1);
             put('r', 1);
         }};
-       var hashmap=  Interview.getFrequencyHashTable("Hello World!;  h23@@");
-        return Interview.getFrequencyHashTable("Hello World!;  h23@@").equals(testMap);
 
+        return Interview.getFrequencyHashTable("Hello World!;  h23@@").equals(testMap);
     }
 
     public static boolean testReadFile() {
@@ -78,7 +78,6 @@ public class InterviewTester {
     public static boolean testCalculateEntropy(){
         double result = Interview.calculateEntropy(new HashMap<>(){{put('a', 5); put('b', 18); put('v', 34);}});
         double expected = 1.2777667316575494;
-
         return Math.abs(result - expected) < 0.05;
 
     }
