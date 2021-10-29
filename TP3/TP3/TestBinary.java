@@ -54,6 +54,7 @@ public class TestBinary {
         TestHelper.printTest(tree.contains(randInt));
     }
 
+
     private void testRandomNotContains() {
         Integer max = 1000;
         BinarySearchTree<Integer> tree = new BinarySearchTree<>(max / 2);
@@ -64,6 +65,8 @@ public class TestBinary {
         }
         TestHelper.printTest(!tree.contains(max));
     }
+
+
 
     private void testWithOneValue() {
         Random rand = new Random();
@@ -76,7 +79,7 @@ public class TestBinary {
         TestHelper.printTest(inOrder.equals(sortedArray));
     }
 
-    private void testWithRightValues() {
+   private void testWithRightValues() {
         Integer max = 1000;
         BinarySearchTree<Integer> tree = new BinarySearchTree<>(0);
         List<Integer> list = new ArrayList<>();
@@ -175,6 +178,7 @@ public class TestBinary {
             isGood &= tree.contains(randInt);
         }
         long duration = (System.nanoTime() - startTime);
+        System.out.println( "contains : " + duration);
         TestHelper.printTest(isGood && duration < 500000000);
     }
 
@@ -190,6 +194,11 @@ public class TestBinary {
             isGood &= max - 1 == tree.getHeight();
         }
         long duration = (System.nanoTime() - startTime);
+        System.out.println("height : " +duration);
+        System.out.println(isGood);
         TestHelper.printTest(isGood && duration < 1600000000);
     }
+
+
+
 }
