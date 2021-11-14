@@ -5,7 +5,7 @@ public class Heap<ValueType extends Comparable<? super ValueType>> implements It
         public ArrayList<ValueType> elements;
         private final boolean isMax;
 
-        public int size(){
+        public int size() {
             return elements.size() - 1;
         }
 
@@ -14,70 +14,81 @@ public class Heap<ValueType extends Comparable<? super ValueType>> implements It
             return elements.listIterator(1);
         }
 
-        public Heap(boolean isMax, Collection<ValueType> elements){
+        public Heap(boolean isMax, Collection<ValueType> elements) {
             // Ne pas modifier ces lignes
             this.isMax = isMax;
             this.elements = new ArrayList<>();
             this.elements.add(null);
             this.elements.addAll(elements);
             // Ne pas modifier ces lignes
-
-            /* TODO Ajouter une ligne de code pour construire le heap */
-
+            buildHeap();
         }
 
         /* TODO Implementer le compare pour un MaxHeap et MinHeap */
-        protected boolean compare(ValueType first, ValueType second){
-            return false;
+        protected boolean compare(ValueType first, ValueType second) {
+            if(isMax) return first.compareTo(second) < 0;
+            return first.compareTo(second) > 0;
         }
 
         /* TODO Retourner l'index du parent */
-        public int parentIndex(int index){
-            return -1;
+        public int parentIndex(int index) {
+            return index/2;
         }
 
         /* TODO Retourner l'enfant gauche du noeud */
-        public int leftChildIndex(int index){
-            return -1;
+        public int leftChildIndex(int index) {
+            return 2*index;
         }
 
         /* TODO Retourner l'enfant droit du noeud */
-        public int rightChildIndex(int index){
-            return -1;
+        public int rightChildIndex(int index) {
+            return 2*index+1;
         }
 
         /* TODO Retourner si l'index present est une feuille */
-        public boolean isLeaf(int pos)
-        {
+        public boolean isLeaf(int pos) {
+            if(pos <= size() && pos >= size()/2 + 1) return true;
             return false;
         }
 
         /* TODO Constuire le monceau avec les noeuds dans "elements" */
-        public void buildHeap(){
+        // O(N)
+        public void buildHeap() {
+            for (int i = size() / 2; i > 0; i--) {
+                percolateDown(i);
+            }
         }
 
         /* TODO Echanger les elements qui se retrouve aux indexes currentIndex et parentIndex */
-        private void swap(int currentIndex, int parentIndex)
-        {
+        private void swap(int currentIndex, int parentIndex) {
+            ValueType temp = elements.get(currentIndex);
+            elements.set(currentIndex, elements.get(parentIndex));
+            elements.set(parentIndex, temp);
         }
 
         /* TODO Ajouter un element dans le monceaux. */
-        public void insert(ValueType value){
+        // O(logN)
+        public void insert(ValueType value) {
+            elements.add(value);
+            for(int i = size(); elements.get(i/2).compareTo(value) > 0; i /= 2) {
+                swap(i/2, i);
+            }
         }
 
         /* TODO Completer l'implementation des conditions de percolateDown pour un heap */
-        private void percolateDown(int index){
+        // O(logN)
+        private void percolateDown(int index) {
             int child;
             ValueType temp = elements.get(index);
-            for(; index * 2 < size(); index = child){
+            for(; index * 2 < size(); index = child) {
 
                 child = index * 2;
 
-                if(child != size() /* TODO Ajouter une condition pour evaluer les deux noeuds */) {
+                if(child != size() && compare(elements.get(child), elements.get(child+1))) {
                     child++;
                 }
 
-                if(true /*TODO Ajouter une condition pour evaluer les deux noeuds */){
+                if(compare(temp, elements.get(child))) {
                     elements.set(index, elements.get(child));
                 }
                 else
@@ -87,24 +98,39 @@ public class Heap<ValueType extends Comparable<? super ValueType>> implements It
         }
 
         /* TODO En utilisant leftChildIndex, ajouter les elements gauche du Heap dans une liste et les retourner. */
-        public List<ValueType> getLeftElements(){
-            return new ArrayList<>();
+        public List<ValueType> getLeftElements() {
+            ArrayList<ValueType> AllLeftElements = new ArrayList<>();
+            for(int i = 1; 2*i <= size(); i++) {
+                AllLeftElements.add(elements.get(2*i));
+            }
+            return AllLeftElements;
         }
 
         /* TODO En utilisant rightChildIndex, ajouter les droites du Heap dans une liste et les retourner. */
-        public List<ValueType> getRightElements(){
-            return new ArrayList<>();
+        public List<ValueType> getRightElements() {
+            ArrayList<ValueType> AllRightElements = new ArrayList<>();
+            for(int i = 1; 2*i+1 <= size(); i++) {
+                AllRightElements.add(elements.get(2*i+1));
+            }
+            return AllRightElements;
         }
 
         /* TODO En utilisant parentIndex, ajouter les noeuds  parents du Heap dans une liste et les retourner. */
-        public List<ValueType> getParentElements(){
-            return  new ArrayList<>();
+        public List<ValueType> getParentElements() {
+            ArrayList<ValueType> AllParents = new ArrayList<>();
+            for(int i = 1; 2*i <= size(); i++) {
+                AllParents.add(elements.get(i));
+            }
+            return AllParents;
         }
 
         /* TODO Ajouter les noeuds feuilles du monceau en utilisant isLeaf */
-        public List<ValueType> getLeaves(){
-            return new ArrayList<>();
+        public List<ValueType> getLeaves() {
+            ArrayList<ValueType> Leaves = new ArrayList<>();
+            for (int i = 0; i <= size(); i++) {
+                if(isLeaf(i)) Leaves.add(elements.get(i));
+            }
+            return Leaves;
         }
 
 }
-
