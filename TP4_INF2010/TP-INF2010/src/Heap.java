@@ -47,8 +47,7 @@ public class Heap<ValueType extends Comparable<? super ValueType>> implements It
 
         /* TODO Retourner si l'index present est une feuille */
         public boolean isLeaf(int pos) {
-            if(pos <= size() && pos >= size()/2 + 1) return true;
-            return false;
+            return pos <= size() && pos >= size() / 2 + 1;
         }
 
         /* TODO Constuire le monceau avec les noeuds dans "elements" */
