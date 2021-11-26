@@ -12,7 +12,7 @@ public class Interview {
 
         Cell[][] costs = new Cell[m][n];
         for (Cell[] cells : costs){
-            for(Cell c: cells ){
+            for(Cell c: cells){ // Cette ligne retourne des null ptr j'att que le prof le corrige
                 c.cost = Integer.MAX_VALUE;
             }
         }
@@ -26,17 +26,19 @@ public class Interview {
         while (!heap.isEmpty()) {
             Cell curr = heap.poll();
 
-            if (false /*TODO Condition si on arrive à la fin de la matrice */) return curr.cost;
+            if (curr.xPos == maxPosX && curr.yPos == maxPosY /*TODO Condition si on arrive à la fin de la matrice */) return curr.cost;
 
 
             for (int i = 0; i < DIRECTIONS.length; i++) {
                 int[] dir = DIRECTIONS[i];
                 int newX = curr.xPos + dir[0], newY = curr.yPos + dir[1];
-                if (false/*TODO Condition qui assure qu'on est toujours dans les bornes de la matrice */) continue;
+                if (newX <= maxPosX && newY <= maxPosY/*TODO Condition qui assure qu'on est toujours dans les bornes de la matrice */) continue;
 
-                int newCost = -1 /*TODO Calculer le nouveau cout selon le deplacement*/;
+                int newCost = curr.cost+(i+1); /*TODO Calculer le nouveau cout selon le deplacement*/;
 
                 if (costs[newX][newY].cost > newCost) {
+                    costs[newX][newY].cost = newCost;
+                    heap.add(new Cell(newX, newY, newCost));
                     /*TODO Mettre le nouveau cout au bonne emplacement dans la matrice & l'ajouter au heap.*/
                 }
             }
