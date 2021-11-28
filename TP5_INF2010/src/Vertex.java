@@ -12,6 +12,6 @@ public class Vertex implements Comparable<Vertex> {
 
     @Override
     public int compareTo(Vertex o) {
-        return Math.min(this.cost, o.cost);
+        return cost-o.cost;
     }
 }

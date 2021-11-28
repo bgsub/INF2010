@@ -1,9 +1,9 @@
 import java.util.HashSet;
 
 public class UndirectedGraph implements Graph {
-    private HashSet<Integer>[] neighbours;
-    private int nodeQuantity;
-    private int graphEdges;
+    public HashSet<Integer>[] neighbours;
+    public int nodeQuantity;
+    public int graphEdges;
 
     @Override
     public void initialize(int numNodes) {
@@ -15,10 +15,9 @@ public class UndirectedGraph implements Graph {
 
     @Override
     public void connect(int v1, int v2){
-        /*TODO Implement necessary conditions for connect and justify each condition */
-        if(v1 < 0 || v1 >= nodeQuantity) return; /*Voir si v1 est un sommet du graphe */
-        if(v2 < 0 || v2 >= nodeQuantity) return; /*Voir si v2 est un sommet du graphe */
-        if( neighbours[v1].contains(v2) ) return; /*Voir si v1 est deja connecter a v2*/
+        if(v1 < 0 || v1 >= nodeQuantity) return; /*Si v1 n'est pas un sommet du graphe, return*/
+        if(v2 < 0 || v2 >= nodeQuantity) return; /*Si vertex n'est pas un sommet du graphe, return*/
+        if( neighbours[v1].contains(v2) ) return; /*Si v1 est deja connecter a vertex, return*/
         neighbours[v1].add(v2);
         neighbours[v2].add(v1);
         graphEdges++;
